@@ -27,5 +27,5 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
     - run: npm ci
-    - run: npx cypress run
+    - run: docker run -it -v $PWD:/e2e -w /e2e --entrypoint=cypress cypress/included:8.4.1 run
   
