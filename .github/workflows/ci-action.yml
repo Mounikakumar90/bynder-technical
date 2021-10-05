@@ -27,5 +27,9 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
     - run: npm ci
-    - run: docker run -t -v $(pwd):/e2e -w /e2e --entrypoint=cypress cypress/included:8.4.1 run
+    - name: run tests on Electron 
+      run: docker run -t -v $(pwd):/e2e -w /e2e --entrypoint=cypress cypress/included:8.4.1 run
+    - name: run tests on Chrome
+      run: docker run -t -v $(pwd):/e2e -w /e2e --entrypoint=cypress cypress/browsers:node12.18.0-chrome83-ff77 run --browser chrome
+      
   
