@@ -10,13 +10,13 @@ on:
     branches: [ main ]
 
 jobs:
-  build:
+  test:
 
     runs-on: ubuntu-latest
 
     strategy:
       matrix:
-        node-version: [12.x, 14.x, 16.x]
+        node-version: [14.x] #this list can be expanded to add different versions of node.js if multi version support is needed.
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
@@ -28,3 +28,4 @@ jobs:
         cache: 'npm'
     - run: npm ci
     - run: npx cypress run
+  
